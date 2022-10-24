@@ -6,13 +6,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-    <TextView
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="144dp"
+        tools:layout_editor_absoluteX="45dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/cafe"
+            android:contentDescription="Q12"
+            android:layout_width="117dp"
+            android:layout_height="157dp"
+            android:src="@mipmap/ic_cafe_foreground"
+            android:backgroundTint="@color/white"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/cafe_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_gravity="center|bottom"
+            android:clickable="false"
+            android:text="카페·디저트"
+            android:textSize="15dp"
+            android:textFontWeight="600"
+            android:textColor="@color/teal_700"/>
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
