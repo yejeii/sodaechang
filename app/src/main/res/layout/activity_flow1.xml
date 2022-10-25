@@ -5,70 +5,98 @@
     android:layout_height="match_parent">
 
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="169dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="94dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/white"
-        android:text="부산진구"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton10"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="169dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="94dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="27dp"
-        android:backgroundTint="@color/white"
-        android:onClick="mOnMenu"
-        android:text="부전동"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+    <LinearLayout
+        android:id="@+id/layout_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/layout_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/imageButton10"
-        android:layout_width="175dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="26dp"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/brand"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="173dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="26dp"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/info"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton10" />
+            <Spinner
+                android:id="@+id/spr_gugun"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|end"
+                android:layout_weight="0.4"
+                android:background="@drawable/bg_spinner_gugun"
+                android:padding="8dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:backgroundTint="@color/yell"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="265dp"
-        tools:ignore="MissingConstraints" />
+            <Spinner
+                android:id="@+id/spr_dong"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|end"
+                android:layout_weight="0.4"
+                android:background="@drawable/bg_spinner_dong"
+                android:padding="8dp" />
+
+            <Button
+                android:id="@+id/btn_refresh"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:backgroundTint="@color/purple_200"
+                android:text="검  색" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_frag_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/layout_spinner"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/btn_frag1"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/brand" />
+
+        <ImageButton
+            android:id="@+id/btn_frag2"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="9dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/info" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_frag_button">
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7">
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_loan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_200"
+            android:text="대출 정보 확인하기" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

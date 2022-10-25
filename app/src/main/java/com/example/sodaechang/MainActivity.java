@@ -18,6 +18,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,38 +27,91 @@ import com.example.sodaechang.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton imageButton1,imageButton2,imageButton3,imageButton4,imageButton5,imageButton6,imageButton7,imageButton8,imageButton9,imageButton12;
+    ImageButton imageButton1, imageButton2, imageButton3, imageButton4, imageButton5, imageButton6,
+            imageButton7, imageButton8, imageButton9, imageButton12;
+
+    ImageButton.OnClickListener clickListener;
     ArrayAdapter<String> adapter;
 
-//    private ActivityMainBinding binding;
+    Intent intent;
+
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        binding = ActivityMainBinding.inflate(getLayoutInflater());     // inflate() : xml에 있는 뷰를 객체화해준다
-        setContentView(R.layout.activity_main);      // 우리가 생성한 루트 뷰를 넘겨준다
+        binding = ActivityMainBinding.inflate(getLayoutInflater());     // inflate() : xml에 있는 뷰를 객체화해준다
+        setContentView(binding.getRoot());      // 우리가 생성한 루트 뷰를 넘겨준다
+
+        // Init View
+        init();
+
+        // 버튼 클릭 리스너
+        clickListener = new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.imageButton1:
+                    case R.id.imageButton2:
+                    case R.id.imageButton3:
+                    case R.id.imageButton4:
+                    case R.id.imageButton5:
+                    case R.id.imageButton6:
+                    case R.id.imageButton7:
+                    case R.id.imageButton8:
+                    case R.id.imageButton9:
+                    case R.id.imageButton12:
+                        finish();
+//                        Log.d("mytag", String.valueOf(R.id.imageButton1));
+
+                        /* 첫 번째에는 현재의 context 즉 'this', 두 번째에는 이동할 Activity.class 입력 */
+                        // Intent로 값 전달 putExtra(Key, Value)
+                        intent = new Intent(getApplicationContext(), Flow1Activity.class);
+                        intent.putExtra("업종", String.valueOf(view.getContentDescription()));
+                        startActivity(intent);
+                        Log.d("mytag", String.valueOf(view.getContentDescription()));
+                        break;
+                }
+            }
+        };
+
+        imageButton1.setOnClickListener(clickListener);
+        imageButton2.setOnClickListener(clickListener);
+        imageButton3.setOnClickListener(clickListener);
+        imageButton4.setOnClickListener(clickListener);
+        imageButton5.setOnClickListener(clickListener);
+        imageButton6.setOnClickListener(clickListener);
+        imageButton7.setOnClickListener(clickListener);
+        imageButton8.setOnClickListener(clickListener);
+        imageButton9.setOnClickListener(clickListener);
+        imageButton12.setOnClickListener(clickListener);
 
 
-        imageButton1 = (ImageButton) findViewById(R.id.imageButton1);
-        imageButton2 = (ImageButton) findViewById(R.id.imageButton2);
-        imageButton3 = (ImageButton) findViewById(R.id.imageButton3);
-        imageButton4 = (ImageButton) findViewById(R.id.imageButton4);
-        imageButton5 = (ImageButton) findViewById(R.id.imageButton5);
-        imageButton6 = (ImageButton) findViewById(R.id.imageButton6);
-        imageButton7 = (ImageButton) findViewById(R.id.imageButton7);
-        imageButton8 = (ImageButton) findViewById(R.id.imageButton8);
-        imageButton9 = (ImageButton) findViewById(R.id.imageButton9);
-        imageButton12 = (ImageButton) findViewById(R.id.imageButton12);
-
-
-        adapter = new ArrayAdapter<>(this,R.layout.req_01);
-        adapter.addAll("부전동","가야동","개금동","당감동","부암동","연지동","양정동","전포동","범천동");
+//        adapter = new ArrayAdapter<>(this, R.layout.req_01);
+//        adapter.addAll("부전동", "가야동", "개금동", "당감동", "부암동", "연지동", "양정동", "전포동", "범천동");
 
     }
+
+    private  void init() {
+        // xml에서 생성한 id 매치
+        imageButton1 = binding.imageButton1;
+        imageButton2 = binding.imageButton2;
+        imageButton3 = binding.imageButton3;
+        imageButton4 = binding.imageButton4;
+        imageButton5 = binding.imageButton5;
+        imageButton6 = binding.imageButton6;
+        imageButton7 = binding.imageButton7;
+        imageButton8 = binding.imageButton8;
+        imageButton9 = binding.imageButton9;
+        imageButton12 = binding.imageButton12;
+    }
+
     //버튼클릭
-    public void mOnMenu(View v){
+    public void mOnMenu(View v) {
         CreateListDialog();
     }
+
     public void CreateListDialog() {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("행정동 선택");
@@ -74,120 +128,8 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
-        ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener(){
-                @Override
-                public void onClick (View v){
-                    Intent intent;
-                    Log.d("mytag","message");
+}
 
-                    intent = new Intent(getApplicationContext(),Flow1Activity.class);
-                    intent.putExtra("업종", "Q1");
-                    startActivity(intent);
-                    Log.v("tag",getApplicationContext().toString());
-//                    switch (v.getId()) {
-//                        case R.id.imageButton1:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q1");
-//                            startActivity(intent);
-//                            Log.v("tag",getApplicationContext().toString());
-//                            break;
-//                        case R.id.imageButton2:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q2");
-//                            startActivity(intent);
-//                            Log.v("tag","message");
-//                            break;
-//                        case R.id.imageButton3:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q3");
-//                            startActivity(intent);
-//                            Log.d("tag","message");
-//                            break;
-//                        case R.id.imageButton4:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q4");
-//                            startActivity(intent);
-//                            Log.d("tag","message");
-//                            break;
-//                        case R.id.imageButton5:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q5");
-//                            startActivity(intent);
-//                            Log.d("tag","message");
-//                            break;
-//                        case R.id.imageButton6:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q6");
-//                            startActivity(intent);
-//                            Log.d("tag","message");
-//                            break;
-//                        case R.id.imageButton7:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q7");
-//                            startActivity(intent);
-//                            Log.d("tag","message");
-//                            break;
-//                        case R.id.imageButton8:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q8");
-//                            startActivity(intent);
-//                            Log.d("tag","message");
-//                            break;
-//                        case R.id.imageButton9:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q9");
-//                            startActivity(intent);
-//                            Log.d("tag","message");
-//                            break;
-//                        case R.id.imageButton12:
-//                            intent = new Intent(getApplicationContext(),Flow1Activity.class);
-//                            intent.putExtra("업종", "Q12");
-//                            startActivity(intent);
-//                            Log.d("tag","message");
-//                            break;
-                    }
-                    /*imageButton1.setOnClickListener(onClickListener);
-                    imageButton2.setOnClickListener(onClickListener);
-                    imageButton3.setOnClickListener(onClickListener);
-                    imageButton4.setOnClickListener(onClickListener);
-                    imageButton5.setOnClickListener(onClickListener);
-                    imageButton6.setOnClickListener(onClickListener);
-                    imageButton7.setOnClickListener(onClickListener);
-                    imageButton8.setOnClickListener(onClickListener);
-                    imageButton9.setOnClickListener(onClickListener);
-                    imageButton12.setOnClickListener(onClickListener);*/
-                };
-
-            };
-
-
-
-
-
-//        intent.putExtra("업종",imageButton.toString());
-
-
-
-
-//        // View
-//        ImageButton Q12 = binding.imageButton_01;
-////        TextView Q12_text = binding.cafeText;
-//
-//        // Intent
-//        // Intent로 Activity 전환
-//        /* 첫 번째에는 현재의 context 즉 'this', 두 번째에는 이동할 Activity.class 입력 */
-//        Intent intent = new Intent(this, Flow1Activity.class);
-//        // Intent로 값 전달 putExtra(Key, Value)
-//        intent.putExtra("업종" , Q12.toString());  //Q12_text.getText()
-//
-//        Q12.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                // Intent로 값 전달
-//                startActivity(intent);
-//            }
-//        });
 
 
 
