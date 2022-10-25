@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spnr_gugun">
+        <item>강서구</item>
+        <item>금정구</item>
+        <item>기장군</item>
+        <item>남구</item>
+        <item>동구</item>
+        <item>동래구</item>
+        <item>부산진구</item>
+        <item>북구</item>
+        <item>사상구</item>
+        <item>사하구</item>
+        <item>서구</item>
+        <item>수영구</item>
+        <item>연제구</item>
+        <item>영도구</item>
+        <item>중구</item>
+        <item>해운대구</item>
+    </string-array>
+
+    <string-array name="spnr_gangseo">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+
+    <string-array name="spnr_geumjeong">
+        <item>구서동</item>
+        <item>금사동</item>
+        <item>금성동</item>
+        <item>남산동</item>
+        <item>노포동</item>
+        <item>두구동</item>
+        <item>부곡동</item>
+        <item>서동</item>
+        <item>선동</item>
+        <item>오륜동</item>
+        <item>장전동</item>
+        <item>청룡동</item>
+        <item>회동동</item>
+    </string-array>
+
+    <string-array name="spnr_gijang">
+        <item>기장읍</item>
+        <item>일광읍</item>
+        <item>장안읍</item>
+        <item>정관면</item>
+        <item>정관읍</item>
+        <item>철마면</item>
+    </string-array>
+
+    <string-array name="spnr_nam">
+        <item>감만동</item>
+        <item>대연동</item>
+        <item>문현동</item>
+        <item>용당동</item>
+        <item>용호동</item>
+        <item>우암동</item>
+    </string-array>
+
+    <string-array name="spnr_dong">
+        <item>범일동</item>
+        <item>수정동</item>
+        <item>좌천동</item>
+        <item>초량동</item>
+    </string-array>
+
+    <string-array name="spnr_dongne">
+        <item>낙민동</item>
+        <item>명륜동</item>
+        <item>명장동</item>
+        <item>복천동</item>
+        <item>사직동</item>
+        <item>수안동</item>
+        <item>안락동</item>
+        <item>온천동</item>
+        <item>칠산동</item>
+    </string-array>
+
+    <string-array name="spnr_busanjin">
+        <item>가야동</item>
+        <item>개금동</item>
+        <item>당감동</item>
+        <item>범전동</item>
+        <item>범천동</item>
+        <item>부암동</item>
+        <item>부전동</item>
+        <item>양정동</item>
+        <item>연지동</item>
+        <item>전포동</item>
+        <item>초읍동</item>
+    </string-array>
+
+    <string-array name="spnr_book">
+        <item>구포동</item>
+        <item>금곡동</item>
+        <item>덕천동</item>
+        <item>만덕동</item>
+        <item>화명동</item>
+    </string-array>
+
+    <string-array name="spnr_sasang">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+
+    <string-array name="spnr_saha">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+
+    <string-array name="spnr_seo">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+
+    <string-array name="spnr_suyoung">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+
+    <string-array name="spnr_yeonje">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+
+    <string-array name="spnr_youngdo">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+
+    <string-array name="spnr_jeung">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+
+    <string-array name="spnr_haeundae">
+        <item>대저동</item>
+        <item>강동동</item>
+        <item>명지동</item>
+        <item>가락동</item>
+        <item>녹산동</item>
+        <item>가덕도동</item>
+    </string-array>
+</resources>

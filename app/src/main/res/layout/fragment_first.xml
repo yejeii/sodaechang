@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/firstFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+    <LinearLayout
+        android:id="@+id/layout_textview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/layout_textview2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_gugun"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center|fill_horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="행정구 명"
+            android:textColor="@color/purple_500"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_dong"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center|fill_horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="행정동 명"
+            android:textColor="@color/purple_200"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:text="에서의"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_ctgry"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center|fill_horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="업종 명"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_textview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/layout_textview1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="평균 창업 비용은 "
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center|fill_horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="창업 비용"
+            android:textColor="@color/purple_700"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="원 입니다."
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_cost"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_textview2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
