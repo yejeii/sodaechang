@@ -20,7 +20,7 @@ public class Flow1Activity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // view
-        TextView tv = binding.textView;
+        TextView tv = binding.textView2;
 
         // MainActivity에서 건너온 intent 값 받아오기
         Intent intent = getIntent();
