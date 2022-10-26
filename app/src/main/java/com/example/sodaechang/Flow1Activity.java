@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,7 +32,6 @@ public class Flow1Activity extends AppCompatActivity {
 
     private ActivityFlow1Binding binding;
     private Button refresh_btn;
-    private TextView ctgry_tv;
     private ImageButton frag1_btn, frag2_btn;
 
     private Fragment firstFragment, secondFragment;   // Fragment 참조변수
@@ -51,19 +51,20 @@ public class Flow1Activity extends AppCompatActivity {
         // gugun_spr, dong_spr가 함수 안에서 사용되기 때문에 코딩전체로 선언
         final Spinner gugun_spr = binding.sprGugun;
         final Spinner dong_spr = binding.sprDong;
-//        final String gugun_text;    // 프래그먼트로 전달할 변수라 final로 지정
+        final String[] gugun_text = new String[1];    // 프래그먼트로 전달할 변수라 final로 지정
         final String[] dong_text = new String[1];
+        final String[] catgry_text = new String[1];
 //        final TextView gugun_tv = R.id.tv_gugun;
 //        final TextView dong_tv = binding.tvDong;
         frag1_btn = binding.btnFrag1;
         frag2_btn = binding.btnFrag2;
-        refresh_btn = binding.btnRefresh;
-//        ctgry_tv = binding.tvCtgry;
 
+        final int[] searchFilter = {-1};     // 스피너를 터치했을 때 스피너를 구분하는 전역변수
+        
         // MainActivity에서 건너온 업종명(intent 값) 받아오기
         Intent intent = getIntent();
-//        ctgry_tv.setText(intent.getStringExtra("업종"));
         Log.d("mytag", "업종 명 : "+intent.getStringExtra("업종"));
+        catgry_text[0] = intent.getStringExtra("업종");
 //        intent.getIntExtra("key값", 0);   int의 경우 value에 default 값을 적어준다
 
         // 사용자가 Flow1Activity에 있는 spinner에서 선택한 값이 FirstFragment에 전달되어 표현될 예정.
@@ -75,85 +76,76 @@ public class Flow1Activity extends AppCompatActivity {
         adtr_spnr1 = ArrayAdapter.createFromResource(Flow1Activity.this, R.array.spnr_gugun, android.R.layout.simple_spinner_dropdown_item);
         adtr_spnr1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gugun_spr.setAdapter(adtr_spnr1);   // 어댑터에 값들(R.array.spnr_gugun)을 spinner에 장착
+        gugun_spr.setSelection(0, false);   // 초기설정
 
         // 첫번째 spinner(gugun_spr) 클릭시 이벤트 발생
         gugun_spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 // int i : 포지션이라 하여 사용자가 spinner에 선택한 값이 들어간다
-                Log.d("mytag", "position is"+adapterView.getItemAtPosition(i).toString());
 
-                if (adtr_spnr1.getItem(i).equals("부산진구")) { // spinner에 선택한 값이 "부산진구"이면
-//                    gugun_tv.setText(adtr_spnr1.getItem(i));    // 확인
+                // onCreate()시 Spinner의 setOnItemSelectedListener()가 자동실행되는 문제점 해결하기 위한 조건절
+                // 사용자가 스피너를 선택해 변경하는 경우에만 조회되도록 변경
+                if(searchFilter[0] == 1) {
 
-                    // "부산진구"일 경우 두번째 spinner에 값을 넣는 작업
-                    adtr_spnr2 = ArrayAdapter.createFromResource(Flow1Activity.this, R.array.spnr_busanjin, android.R.layout.simple_spinner_dropdown_item);
-                    adtr_spnr2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    dong_spr.setAdapter(adtr_spnr2);    // 두번째 어댑터값(R.array.spnr_busanjin)을 두번째 spinner에 장착
+                    gugun_text[0] = adtr_spnr1.getItem(i).toString();
 
-                    dong_spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            Log.d("mytag", "position is"+adapterView.getItemAtPosition(i).toString());
+                    Log.d("mytag", "position is " + adapterView.getItemAtPosition(i).toString());
 
-//                            dong_tv.setText(adtr_spnr2.getItem(i));    // 확인
-//                            dong_text[0] = adtr_spnr2.getItem(i).toString();
-                            dong_text[0] = adapterView.getItemAtPosition(i).toString();
-                        }
+                    if (adtr_spnr1.getItem(i).equals("부산진구")) { // spinner에 선택한 값이 "부산진구"이면
 
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-                            // 아무것도 선택안될시 부분
+                        // "부산진구"일 경우 두번째 spinner에 값을 넣는 작업
+                        adtr_spnr2 = ArrayAdapter.createFromResource(Flow1Activity.this, R.array.spnr_busanjin, android.R.layout.simple_spinner_dropdown_item);
+                        adtr_spnr2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        dong_spr.setAdapter(adtr_spnr2);    // 두번째 어댑터값(R.array.spnr_busanjin)을 두번째 spinner에 장착
+                        dong_spr.setSelection(0, false);   // 초기설정
 
-                        }
-                    });
+                        dong_spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                                dong_spr.setSelection(0, false);
+                                Log.d("mytag", "position is " + adapterView.getItemAtPosition(i).toString());
 
-                    // FirstFragment.java로 값 전달
-                    manager = getSupportFragmentManager();  // Fragment를 제어하기 위한 매니저 객체 GET
-                    tran = manager.beginTransaction();
-
-                    Bundle bundle = new Bundle();
-
-                    // 1. 입력 메세지
-                    String gugun_text = adtr_spnr1.getItem(i).toString();
-//                    String dong_text = adtr_spnr2.getItem(i).toString();
-
-                    // 2. 데이터 담기
-                    bundle.putString("gugun", gugun_text);
-                    bundle.putString("dong", dong_text[0]);
-                    bundle.putString("catgry", intent.getStringExtra("업종"));
-
-                    // 3. 프래그먼트 선언
-                    firstFragment = new FirstFragment();
-
-                    // 4. 프래그먼트에 데이터 넘기기
-                    firstFragment.setArguments(bundle);
-
-                    // 5. 프래그먼트 화면 보여주기
-                    tran.replace(R.id.fragment_container, firstFragment).commit();
-                }
-                else if(adtr_spnr1.getItem(i).equals("강서구")) {
-//                    gugun_tv.setText(adtr_spnr1.getItem(i));    // 확인
-
-                    // "강서구"일 경우 두번째 spinner에 값을 넣는 작업
-                    adtr_spnr2 = ArrayAdapter.createFromResource(Flow1Activity.this, R.array.spnr_gangseo, android.R.layout.simple_spinner_dropdown_item);
-                    adtr_spnr2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    dong_spr.setAdapter(adtr_spnr2);    // 두번째 어댑터값(R.array.spnr_gangseo)을 두번째 spinner에 장착
-
-                    dong_spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            Log.d("mytag", "position is"+adapterView.getItemAtPosition(i).toString());
+                                if(searchFilter[0] == 2) {
 
 //                            dong_tv.setText(adtr_spnr2.getItem(i));    // 확인
-                        }
+                                    dong_text[0] = adapterView.getItemAtPosition(i).toString();
 
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-                            // 아무것도 선택안될시 부분
+                                    // Bundle로 FirstFragment.java로 값 전달
+                                    sendBundletoFragment(Fragment_1, gugun_text[0], dong_text[0], catgry_text[0]);
+                                }
+                            }
 
-                        }
-                    });
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+                                // 아무것도 선택안될시 부분
+
+                            }
+                        });
+                    }
+//                    else if (adtr_spnr1.getItem(i).equals("강서구")) {
+////                    gugun_tv.setText(adtr_spnr1.getItem(i));    // 확인
+//
+//                        // "강서구"일 경우 두번째 spinner에 값을 넣는 작업
+//                        adtr_spnr2 = ArrayAdapter.createFromResource(Flow1Activity.this, R.array.spnr_gangseo, android.R.layout.simple_spinner_dropdown_item);
+//                        adtr_spnr2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                        dong_spr.setAdapter(adtr_spnr2);    // 두번째 어댑터값(R.array.spnr_gangseo)을 두번째 spinner에 장착
+//
+//                        dong_spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                            @Override
+//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                                Log.d("mytag", "position is" + adapterView.getItemAtPosition(i).toString());
+//
+////                            dong_tv.setText(adtr_spnr2.getItem(i));    // 확인
+//                            }
+//
+//                            @Override
+//                            public void onNothingSelected(AdapterView<?> adapterView) {
+//                                // 아무것도 선택안될시 부분
+//
+//                            }
+//                        });
+//                    }
                 }
             }
 
@@ -163,46 +155,82 @@ public class Flow1Activity extends AppCompatActivity {
             }
         });
 
-        // 검색 버튼 클릭 이벤트
-        refresh_btn.setOnClickListener(new View.OnClickListener() {
+        gugun_spr.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-//                Toast.makeText(Flow1Activity.this, gugun_tv.getText().toString()+" "+dong_tv.getText().toString()+"을 선택하셨습니다!", Toast.LENGTH_SHORT).show();
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                searchFilter[0] = 1;
+                return false;
             }
         });
+
+        dong_spr.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                searchFilter[0] = 2;
+                return false;
+            }
+        });
+
 
         // 프래그먼트 버튼 클릭 이벤트
         frag1_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentView(Fragment_1);
+                FragmentView(Fragment_1, gugun_text[0], dong_text[0], catgry_text[0]);
             }
         });
 
         frag2_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentView(Fragment_2);
+                FragmentView(Fragment_2, gugun_text[0], dong_text[0], catgry_text[0]);
             }
         });
 
 
     }
 
-    private void FragmentView(int fragment) {
-        // FragmentTransactiom를 이용해 프래그먼트를 사용
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    private void sendBundletoFragment(int fragment, String gugun, String dong, String catgry) {
+
+        // 원하는 Fragment.java로 값 전달
+        manager = getSupportFragmentManager();  // Fragment를 제어하기 위한 매니저 객체 GET
+        tran = manager.beginTransaction();      // FragmentTransactiom를 이용해 프래그먼트를 사용
+
+        Bundle bundle = new Bundle();
+
+        // 2. 데이터 담기
+        bundle.putString("gugun", gugun);
+        bundle.putString("dong", dong);
+        bundle.putString("catgry", catgry);
+
+        // 3. 프래그먼트 선언
+        if(fragment == 1) {
+            firstFragment = new FirstFragment();
+
+            // 4. 프래그먼트에 데이터 넘기기
+            firstFragment.setArguments(bundle);
+
+            // 5. 프래그먼트 화면 보여주기
+            tran.replace(R.id.fragment_container, firstFragment).commit();
+        } else {
+            secondFragment = new SecondFragment();
+            secondFragment.setArguments(bundle);
+            tran.replace(R.id.fragment_container, secondFragment).commit();
+        }
+
+    }
+
+    private void inquerySqlite() {
+    }
+
+    private void FragmentView(int fragment, String gugun, String dong, String catgry) {
 
         switch (fragment) {
             case 1:     // 첫번째 프래그먼트 호출
-                FirstFragment fragment1 = new FirstFragment();
-                transaction.replace(R.id.fragment_container, fragment1);
-                transaction.commit();
+                sendBundletoFragment(Fragment_1, gugun, dong, catgry);
                 break;
             case 2:     // 두번째 프래그먼트 호출
-                SecondFragment fragment2 = new SecondFragment();
-                transaction.replace(R.id.fragment_container, fragment2);
-                transaction.commit();
+                sendBundletoFragment(Fragment_2, gugun, dong, catgry);
                 break;
         }
     }

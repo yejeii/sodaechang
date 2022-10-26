@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class FirstFragment extends Fragment {
 
+    TextView tv_gugun, tv_dong, tv_ctgry;
 
     // Fragment의 lifecycle 메소드 중에서 Fragment가 보여줄 View를 설정하는 메소드
     // MainActivity.java 에서 onCreate() 메소드 안에 setContentView()하듯이
@@ -21,16 +22,16 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Fragment가 보여줄 View 객체를 참조할 참조변수 생성
-        View view = null;
+
+        // Fragment가 보여줄 View 객체형 참조변수 생성
+        // 매개변수로 전달된 LayoutInflater 객체를 통해 fragment_first.xml 레이아웃 파일을 View 객체로 생성
+        View view = inflater.inflate(R.layout.fragment_first, container, false);
 
         // View
-        TextView tv_gugun = view.findViewById(R.id.tv_gugun);
-        TextView tv_dong = view.findViewById(R.id.tv_dong);
-        TextView tv_ctgry = view.findViewById(R.id.tv_ctgry);
+        tv_gugun = view.findViewById(R.id.tv_gugun);
+        tv_dong = view.findViewById(R.id.tv_dong);
+        tv_ctgry = view.findViewById(R.id.tv_ctgry);
 
-        // 매개변수로 전달된 LayoutInflater 객체를 통해 fragment_first.xml 레이아웃 파일을 View 객체로 생성
-        view = inflater.inflate(R.layout.fragment_first, container, false);
 
         // Flow1Activity.java에서 넘어온 정보 변수에 저장
         String gugun = this.getArguments().getString("gugun");
@@ -46,4 +47,12 @@ public class FirstFragment extends Fragment {
         return view;
     }
 
+    public void changeData(Bundle bundle) {
+
+        // 정보를 텍스트뷰에 담기
+        tv_gugun.setText(bundle.getBundle("gugun").toString());
+        tv_dong.setText(bundle.getBundle("dong").toString());
+        tv_ctgry.setText(bundle.getBundle("catgry").toString());
+
+    }
 }

@@ -38,14 +38,6 @@
                 android:background="@drawable/bg_spinner_dong"
                 android:padding="8dp" />
 
-            <Button
-                android:id="@+id/btn_refresh"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:backgroundTint="@color/purple_200"
-                android:text="검  색" />
-
         </LinearLayout>
 
     </LinearLayout>
@@ -86,7 +78,7 @@
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="450dp"
             android:layout_weight="0.7">
 
         </FrameLayout>
