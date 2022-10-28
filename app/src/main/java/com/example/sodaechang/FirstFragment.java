@@ -47,12 +47,4 @@ public class FirstFragment extends Fragment {
         return view;
     }
 
-    public void changeData(Bundle bundle) {
-
-        // 정보를 텍스트뷰에 담기
-        tv_gugun.setText(bundle.getBundle("gugun").toString());
-        tv_dong.setText(bundle.getBundle("dong").toString());
-        tv_ctgry.setText(bundle.getBundle("catgry").toString());
-
-    }
 }

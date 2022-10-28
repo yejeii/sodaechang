@@ -183,6 +183,7 @@ public class Flow1Activity extends AppCompatActivity {
         frag2_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("mytag", "두번째 프래그먼트 클릭");
                 FragmentView(Fragment_2, gugun_text[0], dong_text[0], catgry_text[0]);
             }
         });
@@ -192,6 +193,7 @@ public class Flow1Activity extends AppCompatActivity {
 
     private void sendBundletoFragment(int fragment, String gugun, String dong, String catgry) {
 
+        Log.d("mytag", "sendBundletoFragment 1");
         // 원하는 Fragment.java로 값 전달
         manager = getSupportFragmentManager();  // Fragment를 제어하기 위한 매니저 객체 GET
         tran = manager.beginTransaction();      // FragmentTransactiom를 이용해 프래그먼트를 사용
@@ -202,9 +204,11 @@ public class Flow1Activity extends AppCompatActivity {
         bundle.putString("gugun", gugun);
         bundle.putString("dong", dong);
         bundle.putString("catgry", catgry);
+        Log.d("mytag", "sendBundletoFragment 데이터 담기 완료");
 
         // 3. 프래그먼트 선언
         if(fragment == 1) {
+            Log.d("mytag", "첫번째 프래그먼트로 이동 처리");
             firstFragment = new FirstFragment();
 
             // 4. 프래그먼트에 데이터 넘기기
@@ -212,10 +216,13 @@ public class Flow1Activity extends AppCompatActivity {
 
             // 5. 프래그먼트 화면 보여주기
             tran.replace(R.id.fragment_container, firstFragment).commit();
+            Log.d("mytag", "첫번째 프래그먼트로 이동 처리 완료");
         } else {
+            Log.d("mytag", "두번째 프래그먼트로 이동 처리");
             secondFragment = new SecondFragment();
             secondFragment.setArguments(bundle);
             tran.replace(R.id.fragment_container, secondFragment).commit();
+            Log.d("mytag", "두번째 프래그먼트로 이동 처리 완료");
         }
 
     }
@@ -230,6 +237,7 @@ public class Flow1Activity extends AppCompatActivity {
                 sendBundletoFragment(Fragment_1, gugun, dong, catgry);
                 break;
             case 2:     // 두번째 프래그먼트 호출
+                Log.d("mytag", "FragmentView case 2");
                 sendBundletoFragment(Fragment_2, gugun, dong, catgry);
                 break;
         }

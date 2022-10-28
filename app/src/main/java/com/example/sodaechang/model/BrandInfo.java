@@ -6,7 +6,7 @@ public class BrandInfo {
 
     private String brand_id;
     private String brand_name;
-    private String brand_logo;
+    private int brand_logo;
     private String brand_main_category_code;
     private String brand_middle_category_code;
     private String brand_gugun_code;
@@ -15,25 +15,30 @@ public class BrandInfo {
     private String brand_address;
     private String brand_longitude;
     private String brand_latitude;
+    private int brand_count;
 
-    public BrandInfo() {
+//    public BrandInfo(String brand_id, String brand_name, int brand_logo, String brand_main_category_code,
+//                     String brand_middle_category_code, String brand_gugun_code, String brand_dong_code,
+//                     String brand_dong_name, String brand_address, String brand_longitude, String brand_latitude, int brand_count) {
+//        this.brand_id = brand_id;
+//        this.brand_name = brand_name;
+//        this.brand_logo = brand_logo;
+//        this.brand_main_category_code = brand_main_category_code;
+//        this.brand_middle_category_code = brand_middle_category_code;
+//        this.brand_gugun_code = brand_gugun_code;
+//        this.brand_dong_code = brand_dong_code;
+//        this.brand_dong_name = brand_dong_name;
+//        this.brand_address = brand_address;
+//        this.brand_longitude = brand_longitude;
+//        this.brand_latitude = brand_latitude;
+//        this.brand_count = brand_count;
+//    }
 
-    }
 
-    public BrandInfo(String brand_id, String brand_name, String brand_logo, String brand_main_category_code,
-                     String brand_middle_category_code, String brand_gugun_code, String brand_dong_code,
-                     String brand_dong_name, String brand_address, String brand_longitude, String brand_latitude) {
-        this.brand_id = brand_id;
+    public BrandInfo(String brand_name, int brand_logo, int brand_count) {
         this.brand_name = brand_name;
         this.brand_logo = brand_logo;
-        this.brand_main_category_code = brand_main_category_code;
-        this.brand_middle_category_code = brand_middle_category_code;
-        this.brand_gugun_code = brand_gugun_code;
-        this.brand_dong_code = brand_dong_code;
-        this.brand_dong_name = brand_dong_name;
-        this.brand_address = brand_address;
-        this.brand_longitude = brand_longitude;
-        this.brand_latitude = brand_latitude;
+        this.brand_count = brand_count;
     }
 
     public String getBrand_id() {
@@ -52,11 +57,11 @@ public class BrandInfo {
         this.brand_name = brand_name;
     }
 
-    public String getBrand_logo() {
+    public int getBrand_logo() {
         return brand_logo;
     }
 
-    public void setBrand_logo(String brand_logo) {
+    public void setBrand_logo(int brand_logo) {
         this.brand_logo = brand_logo;
     }
 
@@ -122,5 +127,13 @@ public class BrandInfo {
 
     public void setBrand_latitude(String brand_latitude) {
         this.brand_latitude = brand_latitude;
+    }
+
+    public int getBrand_count() {
+        return brand_count;
+    }
+
+    public void setBrand_count(int brand_count) {
+        this.brand_count = brand_count;
     }
 }
