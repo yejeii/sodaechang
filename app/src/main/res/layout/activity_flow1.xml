@@ -56,7 +56,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
             android:backgroundTint="@color/white"
-            android:src="@drawable/brand" />
+            android:src="@drawable/info" />
 
         <ImageButton
             android:id="@+id/btn_frag2"
@@ -64,7 +64,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="9dp"
             android:backgroundTint="@color/white"
-            android:src="@drawable/info" />
+            android:src="@drawable/brand" />
     </LinearLayout>
 
     <LinearLayout

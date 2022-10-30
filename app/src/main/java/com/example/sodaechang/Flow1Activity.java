@@ -31,7 +31,6 @@ public class Flow1Activity extends AppCompatActivity {
     private final int Fragment_2 = 2;
 
     private ActivityFlow1Binding binding;
-    private Button refresh_btn;
     private ImageButton frag1_btn, frag2_btn;
 
     private Fragment firstFragment, secondFragment;   // Fragment 참조변수
@@ -194,6 +193,7 @@ public class Flow1Activity extends AppCompatActivity {
     private void sendBundletoFragment(int fragment, String gugun, String dong, String catgry) {
 
         Log.d("mytag", "sendBundletoFragment 1");
+
         // 원하는 Fragment.java로 값 전달
         manager = getSupportFragmentManager();  // Fragment를 제어하기 위한 매니저 객체 GET
         tran = manager.beginTransaction();      // FragmentTransactiom를 이용해 프래그먼트를 사용

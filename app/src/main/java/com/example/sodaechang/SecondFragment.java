@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.loader.content.AsyncTaskLoader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,11 +29,15 @@ public class SecondFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private ArrayList<BrandInfo> brandArrayList;
+    private ArrayList<BrandInfo> brandArrayList;    // 브랜드 정보를 저장할 ArrayList
     private String[] names;
     private int[] logos;
     private int[] counts;
     private RecyclerView recyclerView;
+
+    private static String IP_ADDRESS = "10.0.2.2";
+    private static String TAG = "PHPTEST";
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -69,9 +74,6 @@ public class SecondFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_second, container, false);
 
-        // Inflate the layout for this fragment
-//        return super.onCreateView(inflater, container, savedInstanceState);
-
         // 데이터 초기화
         dataInitialize();
 
@@ -83,19 +85,6 @@ public class SecondFragment extends Fragment {
         brandAdapter.notifyDataSetChanged();
 
         return view;
-
-//         Set the adapter
-//        if (view instanceof RecyclerView) {
-//            Context context = view.getContext();
-//            RecyclerView recyclerView = (RecyclerView) view;
-//            if (mColumnCount <= 1) {
-//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-//            } else {
-//                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-//            }
-//            recyclerView.setAdapter(new BrandRecyclerViewAdapter(PlaceholderContent.ITEMS));
-//        }
-//        return view;
     }
 
     // 작업 6. Recyclerview를 구현할 코드 작성
@@ -166,4 +155,5 @@ public class SecondFragment extends Fragment {
             brandArrayList.add(brand);
         }
     }
+
 }
