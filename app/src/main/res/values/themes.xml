@@ -15,5 +15,14 @@
 
     </style>
 
+    <style name="Theme.Sodaechang.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Sodaechang.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Sodaechang.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>

@@ -68,6 +68,7 @@ public class SecondFragment extends Fragment {
         }
     }
 
+    // 정상적인 Fragment View 객체를 제공
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,19 +76,19 @@ public class SecondFragment extends Fragment {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_second, container, false);
 
         // 데이터 초기화
-        dataInitialize();
+//        dataInitialize();
 
-        recyclerView = view.findViewById(R.id.list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        BrandRecyclerViewAdapter brandAdapter = new BrandRecyclerViewAdapter(getContext(), brandArrayList);
-        recyclerView.setAdapter(brandAdapter);
-        brandAdapter.notifyDataSetChanged();
+//        recyclerView = view.findViewById(R.id.list);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView.setHasFixedSize(true);
+//        BrandRecyclerViewAdapter brandAdapter = new BrandRecyclerViewAdapter(getContext(), brandArrayList);
+//        recyclerView.setAdapter(brandAdapter);
+//        brandAdapter.notifyDataSetChanged();
 
         return view;
     }
 
-    // 작업 6. Recyclerview를 구현할 코드 작성
+    // 작업 6. View 초기값 설정 & Recyclerview에 사용할 Adapter 세팅 코드 작성
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -95,6 +96,7 @@ public class SecondFragment extends Fragment {
         // 데이터 초기화
         dataInitialize();
 
+        // RecyclerView init
         recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);

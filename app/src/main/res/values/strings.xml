@@ -25,4 +25,27 @@
     <string name="rv_9">아니더면, 같이 천하를 발휘하기 굳세게 힘있다. 것은 예수는 주는 이것이다.</string>
     <string name="rv_10">그들은 있는 이성은 청춘은 든 가슴에 과실이 것은 것이다. 새 피고, 안고, 크고 얼마나 부패뿐이다.</string>
 
+    <string name="title_activity_loan">LoanActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="l_1">대출 상품 1</string>
+    <string name="l_2">대출 상품 2</string>
+    <string name="l_3">대출 상품 3</string>
+    <string name="l_4">대출 상품 4</string>
+    <string name="l_5">대출 상품 5</string>
+    <string name="l_6">대출 상품 6</string>
+    <string name="l_7">대출 상품 7</string>
+    <string name="l_8">대출 상품 8</string>
+    <string name="l_9">대출 상품 9</string>
+    <string name="l_10">대출 상품 10</string>
+    <string name="l_11">대출 상품 11</string>
+    <string name="l_12">대출 상품 12</string>
+
 </resources>

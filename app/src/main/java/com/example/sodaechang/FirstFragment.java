@@ -54,7 +54,6 @@ public class FirstFragment extends Fragment {
 
 
         //drawable 폴더에 있는 이미지 로드
-
         if (text.equals("한식")) {
             imageView01.setImageResource(R.drawable.a_q01);
             tv_cost.setText("82614");

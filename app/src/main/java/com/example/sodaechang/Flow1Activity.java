@@ -32,6 +32,7 @@ public class Flow1Activity extends AppCompatActivity {
 
     private ActivityFlow1Binding binding;
     private ImageButton frag1_btn, frag2_btn;
+    private Button loan_btn;
 
     private Fragment firstFragment, secondFragment;   // Fragment 참조변수
     private FragmentManager manager;       // FragmentTrasaction 객체를 얻기 위해 필요한 참조 객체
@@ -57,6 +58,7 @@ public class Flow1Activity extends AppCompatActivity {
 //        final TextView dong_tv = binding.tvDong;
         frag1_btn = binding.btnFrag1;
         frag2_btn = binding.btnFrag2;
+        loan_btn = binding.btnLoan;
 
         final int[] searchFilter = {-1};     // 스피너를 터치했을 때 스피너를 구분하는 전역변수
         
@@ -184,6 +186,16 @@ public class Flow1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("mytag", "두번째 프래그먼트 클릭");
                 FragmentView(Fragment_2, gugun_text[0], dong_text[0], catgry_text[0]);
+            }
+        });
+
+        // 대출 정보 버튼 클릭 이벤트
+        loan_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // New Activity로 이동
+                Intent loanAc = new Intent(getApplicationContext(), LoanActivity.class);
+                startActivity(loanAc);
             }
         });
 
