@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">sodaechang</string>
+    <string name="app_name_ko">소대창</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="flow2_txt">아직 관심있는 업종이 없으신가요? \n저희가 추천해드려요!</string>
 
     <string name="bd_1">브랜드 1</string>
     <string name="bd_2">브랜드 2</string>

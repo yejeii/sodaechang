@@ -1,6 +1,8 @@
 package com.example.sodaechang;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,6 +36,8 @@ public class Flow1Activity extends AppCompatActivity {
     private ActivityFlow1Binding binding;
     private ImageButton frag1_btn, frag2_btn;
     private Button loan_btn;
+    private Toolbar toolbar;
+    private Intent intent, loanAc;
 
     private Fragment firstFragment, secondFragment;   // Fragment 참조변수
     private FragmentManager manager;       // FragmentTrasaction 객체를 얻기 위해 필요한 참조 객체
@@ -46,6 +51,12 @@ public class Flow1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityFlow1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Toolbar 생성
+        toolbar = binding.flow1Toolbar;
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // 뒤로가기
+        getSupportActionBar().setTitle(R.string.app_name_ko);   // 툴바 제목 설정
 
         // Init View(xml과 class에 변수 연결)
         // gugun_spr, dong_spr가 함수 안에서 사용되기 때문에 코딩전체로 선언
@@ -61,9 +72,12 @@ public class Flow1Activity extends AppCompatActivity {
         loan_btn = binding.btnLoan;
 
         final int[] searchFilter = {-1};     // 스피너를 터치했을 때 스피너를 구분하는 전역변수
-        
+
+        // 뒤로오기 때 인텐트로 확인
+//        intent.putExtra("액티비티", "flow1");
+
         // MainActivity에서 건너온 업종명(intent 값) 받아오기
-        Intent intent = getIntent();
+        intent = getIntent();
         Log.d("mytag", "업종 명 : "+intent.getStringExtra("업종"));
         catgry_text[0] = intent.getStringExtra("업종");
 //        intent.getIntExtra("key값", 0);   int의 경우 value에 default 값을 적어준다
@@ -194,12 +208,32 @@ public class Flow1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // New Activity로 이동
-                Intent loanAc = new Intent(getApplicationContext(), LoanActivity.class);
+                loanAc = new Intent(getApplicationContext(), LoanActivity.class);
+                loanAc.putExtra("액티비티", "flow1");
                 startActivity(loanAc);
             }
         });
 
 
+    }
+
+    // Toolbar에 있는 버튼 클릭 시 발생하는 모든 이벤트 처리
+    // MenuItem : 툴바에 있는 버튼을 눌렀을 때 발생하는 모든 이벤트 정보를 가지고 있는 객체
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:     // toobar의 back키 눌렀을 때 동작
+                // todo
+
+                // 액티비티 이동
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                if (getIntent() != null) {
+                    getIntent().getExtras().remove("업종");
+                }
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void sendBundletoFragment(int fragment, String gugun, String dong, String catgry) {

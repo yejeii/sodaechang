@@ -1,15 +1,21 @@
 package com.example.sodaechang;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.sodaechang.databinding.ActivityLoanBinding;
 import com.example.sodaechang.model.BrandInfo;
 import com.example.sodaechang.model.Loan;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -18,7 +24,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sodaechang.databinding.ActivityLoanBinding;
 
 import java.util.ArrayList;
 
@@ -28,6 +33,8 @@ public class LoanActivity extends AppCompatActivity {
     private ActivityLoanBinding binding;
     private RecyclerView recyclerView;
     private LoanAdapter loanAdapter;
+    private Toolbar toolbar;
+    private Intent intent;
 
     private ArrayList<Loan> loanArrayList;    // 대출 정보를 저장할 ArrayList
     private String[] loanName;
@@ -47,7 +54,11 @@ public class LoanActivity extends AppCompatActivity {
         binding = ActivityLoanBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        // Toolbar 생성
+        toolbar = binding.loanToolbar;
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.app_name_ko);   // 툴바 제목 설정
 
         // RecyclerView init
         recyclerView = findViewById(R.id.loan_recyclerView);
@@ -132,15 +143,33 @@ public class LoanActivity extends AppCompatActivity {
         };
         
         getData();
-    
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    }
+
+    // Toolbar에 있는 버튼 클릭 시 발생하는 모든 이벤트 처리
+    // MenuItem : 툴바에 있는 버튼을 눌렀을 때 발생하는 모든 이벤트 정보를 가지고 있는 객체
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:     // toobar의 back키 눌렀을 때 동작
+                // todo
+
+                // 액티비티 이동
+                if (getIntent() != null) {
+//                    getIntent().getExtras().remove("업종");
+                    // Flow1Activity에서 넘어왔을 떄
+                    if(getIntent().getStringExtra("액티비티").equals("flow1")) {
+                        intent = new Intent(getApplicationContext(), Flow1Activity.class);
+//                    } else if(getIntent().getStringExtra("액티비티").equals("detail")) {
+//                        intent = new Intent(getApplicationContext(), Flow1Activity.class);
+                    }
+                    Log.d("mytag", "getIntent() : "+getIntent().getExtras().getString("업종"));
+                    Log.d("mytag", "getIntent() : "+getIntent().getExtras().getString("액티비티"));
+                }
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getData() {

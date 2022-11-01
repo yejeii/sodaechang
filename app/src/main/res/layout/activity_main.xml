@@ -1,187 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="148dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="한식"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/q01"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="148dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="중식"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/q02"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="148dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="일식"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.694"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/q03"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="130dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="분식"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/q04"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="3dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="치킨/오리요리"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton1"
-        app:srcCompat="@drawable/q05"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="양식"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/q06"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton7"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="아이스크림/피자/패스트푸드"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.694"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:srcCompat="@drawable/q07"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton8"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="21dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="제과제빵/떡/케이크"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
-        app:srcCompat="@drawable/q08"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton9"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="26dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="주점"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.694"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton7"
-        app:srcCompat="@drawable/q09"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton12"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="26dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="카페/디저트"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
-        app:srcCompat="@drawable/q12"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="아직 관심있는 업종이 없으신가요?"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:layout_constraintVertical_bias="0.502"
-        tools:ignore="MissingConstraints" />
+        android:background="@color/teal_700"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"/>
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
+        android:id="@+id/linear_flow1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/black"
-        android:text="상세 보기"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_flow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="관심있는 업종을 선택해보세요!"
+            android:textSize="23sp"
+            android:textStyle="bold"/>
+
+
+        <GridLayout
+        android:id="@+id/grid_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:rowCount="3"
+        android:columnCount="4"
+        android:padding="10dp"
+        tools:ignore="MissingConstraints">
+
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerInside"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="한식"
+                app:srcCompat="@drawable/q01"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center_vertical"
+                android:scaleType="centerInside"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="중식"
+                app:srcCompat="@drawable/q02"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerInside"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="일식"
+                app:srcCompat="@drawable/q03"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="분식"
+                app:srcCompat="@drawable/q04"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="89dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="치킨/오리요리"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/q05"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="82dp"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="양식"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/q06"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="아이스크림/피자/패스트푸드"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/q07"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton8"
+                android:layout_width="92dp"
+                android:layout_height="91dp"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="제과제빵/떡/케이크"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/q08"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:scaleType="center"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="주점"
+                app:srcCompat="@drawable/q09"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton12"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="카페/디저트"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/q12"
+                tools:ignore="MissingConstraints" />
+        </GridLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear_flow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_weight="2"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/tv_flow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/flow2_txt"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+        <RelativeLayout
+            android:id="@+id/relative_flow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <ImageButton
+                android:id="@+id/btn_click"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_idea"
+                android:contextClickable="true"
+                android:tooltipText="업종 추천 버튼" />
+
+            <TextView
+                android:id="@+id/tv_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/purple_200"
+                android:padding="10dp"
+                android:text="살펴보러 가기 Click Click"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

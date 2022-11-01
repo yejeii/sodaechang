@@ -7,18 +7,22 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton imageButton1, imageButton2, imageButton3, imageButton4, imageButton5, imageButton6,
             imageButton7, imageButton8, imageButton9, imageButton12;
 
+    Toolbar toolbar;
+    RelativeLayout relativeLayout;
     ImageButton.OnClickListener clickListener;
     ArrayAdapter<String> adapter;
 
@@ -42,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());     // inflate() : xml에 있는 뷰를 객체화해준다
         setContentView(binding.getRoot());      // 우리가 생성한 루트 뷰를 넘겨준다
+
+        // Toolbar 생성
+        toolbar = binding.toolbar;
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);  // 뒤로가기
+        getSupportActionBar().setTitle(R.string.app_name_ko);   // 툴바 제목 설정
 
         // Init View
         init();
@@ -87,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
         imageButton9.setOnClickListener(clickListener);
         imageButton12.setOnClickListener(clickListener);
 
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("mytag", "Flow2 시작");
+            }
+        });
+
 
 //        adapter = new ArrayAdapter<>(this, R.layout.req_01);
 //        adapter.addAll("부전동", "가야동", "개금동", "당감동", "부암동", "연지동", "양정동", "전포동", "범천동");
@@ -105,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
         imageButton8 = binding.imageButton8;
         imageButton9 = binding.imageButton9;
         imageButton12 = binding.imageButton12;
+
+        relativeLayout = binding.relativeFlow2;
     }
 
     //버튼클릭
