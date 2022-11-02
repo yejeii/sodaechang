@@ -4,28 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.sodaechang.databinding.ActivityLoanBinding;
-import com.example.sodaechang.model.BrandInfo;
+import com.example.sodaechang.model.JsonLoanData;
 import com.example.sodaechang.model.Loan;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoanActivity extends AppCompatActivity {
 
@@ -36,16 +34,12 @@ public class LoanActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Intent intent;
 
-    private ArrayList<Loan> loanArrayList;    // 대출 정보를 저장할 ArrayList
-    private String[] loanName;
-    private String[] loanType;
-    private String[] loanTargetCustomers;
-    private String[] loanCreditLine;
-    private String[] loanPeriod;
-    private String[] loanInterestRate;
-    private String[] loanDesc;
-    private String[] lowestInterestRate;
+    // Spring에서 디비정보 받아오기 위한 설정
+    private String BASE_URL = "http://10.0.0.2:8090/sodaechang/loan/";
+    private JsonApi jsonApi;
 
+    private JsonLoanData jsonData;
+    private ArrayList<Loan> loanArrayList;  // 대출 정보를 저장할 ArrayList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,84 +59,28 @@ public class LoanActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        loanArrayList = new ArrayList<Loan>();
+        // 데이터 통신
+        jsonApi = MyRetrofit.getClient().create(JsonApi.class);
 
-        loanName = new String[] {
-                getString(R.string.l_1),
-                getString(R.string.l_2),
-                getString(R.string.l_3),
-                getString(R.string.l_4),
-                getString(R.string.l_5),
-                getString(R.string.l_6),
-                getString(R.string.l_7),
-                getString(R.string.l_8),
-                getString(R.string.l_9),
-                getString(R.string.l_10),
-                getString(R.string.l_11),
-                getString(R.string.l_12),
-        };
+        Call<JsonLoanData> call = jsonApi.getListAll();
 
-        loanType = new String[] {
-                "소액담보대출1",
-                "소액담보대출2",
-                "소액담보대출3",
-                "소액담보대출4",
-                "소액담보대출5",
-                "소액담보대출6",
-                "소액담보대출7",
-                "소액담보대출8",
-                "소액담보대출9",
-                "소액담보대출10",
-                "소액담보대출11",
-                "소액담보대출12",
-        };
+        call.enqueue(new Callback<JsonLoanData>() {
+            @Override
+            public void onResponse(Call<JsonLoanData> call, Response<JsonLoanData> response) {
+                jsonData = response.body();
+                loanArrayList = jsonData.loanList;
+                Log.d("mytag", "LoanActivity, loanArrayList에 데이터 저장 완료.");
 
-        loanTargetCustomers = new String[] {
-                "기업1",
-                "기업2",
-                "기업3",
-                "기업4",
-                "자영업자5",
-                "자영업자6",
-                "기업7",
-                "자영업자8",
-                "기업9",
-                "자영업자10",
-                "자영업자11",
-                "자영업자12",
-        };
+                loanAdapter = new LoanAdapter(getApplicationContext(), loanArrayList);
+                recyclerView.setAdapter(loanAdapter);
+                loanAdapter.notifyDataSetChanged();
+            }
 
-        loanDesc = new String[] {
-                getString(R.string.rv_1),
-                getString(R.string.rv_2),
-                getString(R.string.rv_3),
-                getString(R.string.rv_4),
-                getString(R.string.rv_5),
-                getString(R.string.rv_6),
-                getString(R.string.rv_7),
-                getString(R.string.rv_8),
-                getString(R.string.rv_9),
-                getString(R.string.rv_10),
-                getString(R.string.rv_3),
-                getString(R.string.rv_6),
-        };
-
-        lowestInterestRate = new String[] {
-                "0.15",
-                "0.41",
-                "0.24",
-                "0.26",
-                "0.45",
-                "0.35",
-                "0.15",
-                "0.41",
-                "0.24",
-                "0.26",
-                "0.45",
-                "0.35",
-        };
-        
-        getData();
+            @Override
+            public void onFailure(Call<JsonLoanData> call, Throwable t) {
+                Log.d("mytag", "LoanActivity, call Fail : "+t.getLocalizedMessage());
+            }
+        });
 
     }
 
@@ -172,17 +110,6 @@ public class LoanActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void getData() {
-        for (int i=0; i<loanName.length; i++) {
-            Loan loan = new Loan(loanName[i], loanType[i], loanTargetCustomers[i], loanDesc[i], lowestInterestRate[i]);
-            loanArrayList.add(loan);
-        }
-
-        loanAdapter = new LoanAdapter(this, loanArrayList);
-        recyclerView.setAdapter(loanAdapter);
-        loanAdapter.notifyDataSetChanged();
-
-    }
 
 
 }

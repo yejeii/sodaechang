@@ -1,132 +1,154 @@
 package com.example.sodaechang.model;
 
+import com.google.gson.annotations.SerializedName;
+
+// JSON 데이터를 class로 받아오기 위한 작업
+// JSON의 key값을 그대로 변수화(JSON 데이터값과 정확하게 일치해야 할 것)
+// @SerializedName()으로 JSON 객체 매칭
 public class Loan {
-    private int loan_id;
-    private String loan_bank;
-    private String loan_bank_logo;
-    private String loan_name;
-    private String loan_type;
-    private String loan_target_customers;
-    private String loan_credit_line;
-    private String loan_period;
-    private String loan_interest_rate;
-    private String loan_desc;
-    private String lowest_interest_rate;
+    @SerializedName("loanId")
+    private int loanId;
+    @SerializedName("loanBank")
+    private String loanBank;
+    @SerializedName("loanBankLogo")
+    private String loanBankLogo;
+    @SerializedName("loanName")
+    private String loanName;
+    @SerializedName("loanType")
+    private String loanType;
+    @SerializedName("loanTarget")
+    private String loanTarget;
+    @SerializedName("loanCreditLine")
+    private String loanCreditLine;
+    @SerializedName("loanPeriod")
+    private String loanPeriod;
+    @SerializedName("loanInterestRate")
+    private String loanInterestRate;
+    @SerializedName("loanDesc")
+    private String loanDesc;
+    @SerializedName("lowestInterestRate")
+    private String lowestInterestRate;
+    @SerializedName("visibility")
     private boolean visibility;
 
-    public Loan(String loan_name, String loan_type, String loan_target_customers,
-                String loan_desc, String lowest_interest_rate) {
-        this.loan_name = loan_name;
-        this.loan_type = loan_type;
-        this.loan_target_customers = loan_target_customers;
-        this.loan_desc = loan_desc;
-        this.lowest_interest_rate = lowest_interest_rate;
+    public Loan() {
     }
 
-    public Loan(int loan_id, String loan_bank, String loan_bank_logo, String loan_name,
-                String loan_type, String loan_target_customers, String loan_credit_line,
-                String loan_period, String loan_interest_rate, String loan_desc,
-                String lowest_interest_rate) {
-        this.loan_id = loan_id;
-        this.loan_bank = loan_bank;
-        this.loan_bank_logo = loan_bank_logo;
-        this.loan_name = loan_name;
-        this.loan_type = loan_type;
-        this.loan_target_customers = loan_target_customers;
-        this.loan_credit_line = loan_credit_line;
-        this.loan_period = loan_period;
-        this.loan_interest_rate = loan_interest_rate;
-        this.loan_desc = loan_desc;
-        this.lowest_interest_rate = lowest_interest_rate;
-        this.visibility = false;
+    public Loan(String loanName, String loanBank, String loanBankLogo, String loanType,
+                String loanTarget, String loanDesc, String lowestInterestRate) {
+        this.loanBank = loanBank;
+        this.loanBankLogo = loanBankLogo;
+        this.loanName = loanName;
+        this.loanType = loanType;
+        this.loanTarget = loanTarget;
+        this.loanDesc = loanDesc;
+        this.lowestInterestRate = lowestInterestRate;
     }
 
-    public int getLoan_id() {
-        return loan_id;
+    public Loan(int loanId, String loanBank, String loanBankLogo, String loanName,
+                String loanType, String loanTarget, String loanCreditLine, String loanPeriod,
+                String loanInterestRate, String loanDesc, String lowestInterestRate,
+                boolean visibility) {
+        this.loanId = loanId;
+        this.loanBank = loanBank;
+        this.loanBankLogo = loanBankLogo;
+        this.loanName = loanName;
+        this.loanType = loanType;
+        this.loanTarget = loanTarget;
+        this.loanCreditLine = loanCreditLine;
+        this.loanPeriod = loanPeriod;
+        this.loanInterestRate = loanInterestRate;
+        this.loanDesc = loanDesc;
+        this.lowestInterestRate = lowestInterestRate;
+        this.visibility = visibility;
     }
 
-    public void setLoan_id(int loan_id) {
-        this.loan_id = loan_id;
+    public int getLoanId() {
+        return loanId;
     }
 
-    public String getLoan_bank() {
-        return loan_bank;
+    public void setLoanId(int loanId) {
+        this.loanId = loanId;
     }
 
-    public void setLoan_bank(String loan_bank) {
-        this.loan_bank = loan_bank;
+    public String getLoanBank() {
+        return loanBank;
     }
 
-    public String getLoan_bank_logo() {
-        return loan_bank_logo;
+    public void setLoanBank(String loanBank) {
+        this.loanBank = loanBank;
     }
 
-    public void setLoan_bank_logo(String loan_bank_logo) {
-        this.loan_bank_logo = loan_bank_logo;
+    public String getLoanBankLogo() {
+        return loanBankLogo;
     }
 
-    public String getLoan_name() {
-        return loan_name;
+    public void setLoanBankLogo(String loanBankLogo) {
+        this.loanBankLogo = loanBankLogo;
     }
 
-    public void setLoan_name(String loan_name) {
-        this.loan_name = loan_name;
+    public String getLoanName() {
+        return loanName;
     }
 
-    public String getLoan_type() {
-        return loan_type;
+    public void setLoanName(String loanName) {
+        this.loanName = loanName;
     }
 
-    public void setLoan_type(String loan_type) {
-        this.loan_type = loan_type;
+    public String getLoanType() {
+        return loanType;
     }
 
-    public String getLoan_target_customers() {
-        return loan_target_customers;
+    public void setLoanType(String loanType) {
+        this.loanType = loanType;
     }
 
-    public void setLoan_target_customers(String loan_target_customers) {
-        this.loan_target_customers = loan_target_customers;
+    public String getLoanTarget() {
+        return loanTarget;
     }
 
-    public String getLoan_credit_line() {
-        return loan_credit_line;
+    public void setLoanTarget(String loanTarget) {
+        this.loanTarget = loanTarget;
     }
 
-    public void setLoan_credit_line(String loan_credit_line) {
-        this.loan_credit_line = loan_credit_line;
+    public String getLoanCreditLine() {
+        return loanCreditLine;
     }
 
-    public String getLoan_period() {
-        return loan_period;
+    public void setLoanCreditLine(String loanCreditLine) {
+        this.loanCreditLine = loanCreditLine;
     }
 
-    public void setLoan_period(String loan_period) {
-        this.loan_period = loan_period;
+    public String getLoanPeriod() {
+        return loanPeriod;
     }
 
-    public String getLoan_interest_rate() {
-        return loan_interest_rate;
+    public void setLoanPeriod(String loanPeriod) {
+        this.loanPeriod = loanPeriod;
     }
 
-    public void setLoan_interest_rate(String loan_interest_rate) {
-        this.loan_interest_rate = loan_interest_rate;
+    public String getLoanInterestRate() {
+        return loanInterestRate;
     }
 
-    public String getLoan_desc() {
-        return loan_desc;
+    public void setLoanInterestRate(String loanInterestRate) {
+        this.loanInterestRate = loanInterestRate;
     }
 
-    public void setLoan_desc(String loan_desc) {
-        this.loan_desc = loan_desc;
+    public String getLoanDesc() {
+        return loanDesc;
     }
 
-    public String getLowest_interest_rate() {
-        return lowest_interest_rate;
+    public void setLoanDesc(String loanDesc) {
+        this.loanDesc = loanDesc;
     }
 
-    public void setLowest_interest_rate(String lowest_interest_rate) {
-        this.lowest_interest_rate = lowest_interest_rate;
+    public String getLowestInterestRate() {
+        return lowestInterestRate;
+    }
+
+    public void setLowestInterestRate(String lowestInterestRate) {
+        this.lowestInterestRate = lowestInterestRate;
     }
 
     public boolean isVisibility() {

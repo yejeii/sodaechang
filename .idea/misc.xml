@@ -28,11 +28,12 @@
         <entry key="..\:/workspace_android/sodaechang/app/src/main/res/layout/fragment_second2.xml" value="0.35052083333333334" />
         <entry key="..\:/workspace_android/sodaechang/app/src/main/res/layout/fragment_second_list.xml" value="0.36614583333333334" />
         <entry key="..\:/workspace_android/sodaechang/app/src/main/res/layout/fragment_second_list_item.xml" value="0.271875" />
-        <entry key="..\:/workspace_android/sodaechang/app/src/main/res/layout/loan_item.xml" value="0.17037037037037037" />
+        <entry key="..\:/workspace_android/sodaechang/app/src/main/res/layout/loan_item.xml" value="0.25" />
         <entry key="..\:/workspace_android/sodaechang/app/src/main/res/layout/req_01.xml" value="0.36614583333333334" />
         <entry key="..\:/workspace_android/sodaechang/app/src/main/res/layout/req_02.xml" value="0.36614583333333334" />
         <entry key="..\:/workspace_android/sodaechang/app/src/main/res/mipmap-anydpi-v26/ic_cafe.xml" value="0.265" />
         <entry key="..\:/workspace_android/sodaechang/app/src/main/res/mipmap-anydpi-v26/ic_cafe_round.xml" value="0.265" />
+        <entry key="..\:/workspace_android/sodaechang/app/src/main/res/xml/network_security_config.xml" value="0.23489583333333333" />
       </map>
     </option>
   </component>
