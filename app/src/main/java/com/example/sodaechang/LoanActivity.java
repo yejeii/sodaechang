@@ -35,7 +35,7 @@ public class LoanActivity extends AppCompatActivity {
     private Intent intent;
 
     // Spring에서 디비정보 받아오기 위한 설정
-    private String BASE_URL = "http://10.0.0.2:8090/sodaechang/loan/";
+    private String BASE_URL = "http://10.0.2.2:8090/sodaechang/loan/";
     private JsonApi jsonApi;
 
     private JsonLoanData jsonData;
