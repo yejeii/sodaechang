@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/flow1_toolbar"
@@ -32,21 +34,21 @@
 
             <Spinner
                 android:id="@+id/spr_gugun"
-                android:layout_width="120dp"
+                android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center|end"
                 android:layout_weight="0.4"
                 android:background="@drawable/bg_spinner_gugun"
-                android:padding="8dp" />
+                android:layout_margin="20dp" />
 
             <Spinner
                 android:id="@+id/spr_dong"
-                android:layout_width="120dp"
+                android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center|end"
                 android:layout_weight="0.4"
                 android:background="@drawable/bg_spinner_dong"
-                android:padding="8dp" />
+                android:layout_margin="20dp" />
 
         </LinearLayout>
 
@@ -62,19 +64,18 @@
 
         <ImageButton
             android:id="@+id/btn_frag1"
-            android:layout_width="180dp"
+            android:layout_width="200dp"
             android:layout_height="120dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:backgroundTint="@color/white"
             android:scaleType="fitXY"
             android:src="@drawable/brand" />
 
         <ImageButton
             android:id="@+id/btn_frag2"
-            android:layout_width="180dp"
+            android:layout_width="200dp"
             android:layout_height="120dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
             android:paddingTop="1dp"
             android:scaleType="fitXY"
             android:backgroundTint="@color/white"
@@ -92,7 +93,7 @@
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_weight="0.7">
 
         </FrameLayout>

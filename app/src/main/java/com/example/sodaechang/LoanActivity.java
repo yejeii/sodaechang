@@ -1,5 +1,6 @@
 package com.example.sodaechang;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -98,13 +99,19 @@ public class LoanActivity extends AppCompatActivity {
                     // Flow1Activity에서 넘어왔을 떄
                     if(getIntent().getStringExtra("액티비티").equals("flow1")) {
                         intent = new Intent(getApplicationContext(), Flow1Activity.class);
+                        intent.putExtra("업종", getIntent().getExtras().getString("업종"));
+                        intent.putExtra("행정구", getIntent().getExtras().getString("행정구"));
+                        intent.putExtra("행정동", getIntent().getExtras().getString("행정동"));
 //                    } else if(getIntent().getStringExtra("액티비티").equals("detail")) {
 //                        intent = new Intent(getApplicationContext(), Flow1Activity.class);
                     }
                     Log.d("mytag", "getIntent() : "+getIntent().getExtras().getString("업종"));
                     Log.d("mytag", "getIntent() : "+getIntent().getExtras().getString("액티비티"));
+                    Log.d("mytag", "getIntent() : "+getIntent().getExtras().getString("행정구"));
+                    Log.d("mytag", "getIntent() : "+getIntent().getExtras().getString("행정동"));
                 }
-                startActivity(intent);
+                setResult(Activity.RESULT_OK, intent);
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

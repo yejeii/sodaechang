@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), Flow1Activity.class);
                         intent.putExtra("업종", String.valueOf(view.getContentDescription()));
                         startActivity(intent);
-                        Log.d("mytag", String.valueOf(view.getContentDescription()));
+                        Log.d("mytag", MainActivity.this.getClass() + " // " + String.valueOf(view.getContentDescription()));
                         break;
                 }
             }
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private  void init() {
+    private void init() {
         // xml에서 생성한 id 매치
         imageButton1 = binding.imageButton1;
         imageButton2 = binding.imageButton2;

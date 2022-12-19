@@ -3,6 +3,7 @@ package com.example.sodaechang;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -210,6 +211,9 @@ public class Flow1Activity extends AppCompatActivity {
                 // New Activity로 이동
                 loanAc = new Intent(getApplicationContext(), LoanActivity.class);
                 loanAc.putExtra("액티비티", "flow1");
+                loanAc.putExtra("행정구", gugun_text[0]);
+                loanAc.putExtra("행정동", dong_text[0]);
+                loanAc.putExtra("업종", catgry_text[0]);
                 startActivity(loanAc);
             }
         });
